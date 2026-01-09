@@ -2,8 +2,7 @@ import {
     Component,
     signal,
 } from '@angular/core';
-
-import {RecipeList} from "app/recipe/components/recipe-list/recipe-list.component";
+import {RouterOutlet} from "@angular/router";
 
 import {APP_TITLE} from './app.config';
 
@@ -13,9 +12,9 @@ import {APP_TITLE} from './app.config';
     templateUrl: './app.html',
     styleUrl: './app.css',
     imports: [
-        RecipeList
+        RouterOutlet,
     ],
 })
-export class App  {
+export class App {
     protected readonly title = signal(APP_TITLE);
 }
