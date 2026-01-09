@@ -1,0 +1,30 @@
+<div class="{{$class}}__buttons">
+    @for ($recipe of recipes(); track $recipe.id) {
+        <button type="button" (click)="onShowRecipeClick($recipe.id)">
+            @if ($recipe.isFavorite) {★}
+            {{$recipe.name}}
+        </button>
+    }
+</div>
+
+<div class="{{$class}}__recipe recipe">
+    @if (isRecipeListReady()) {
+        <span class="recipe__push">
+            Push the button for loading recipe...
+        </span>
+    } @else if (isRecipeLoading()) {
+        <span class="recipe__error">
+            Loading recipe...
+        </span>
+    } @else if (isRecipeError()) {
+        <span class="recipe__error">
+            Error loading recipe.
+        </span>
+    } @else if (recipe(); as $recipe) {
+        <app-recipe-info [recipe]="$recipe" />
+    } @else {
+        <span class="recipe__loading">
+            Loading the recipe list...
+        </span>
+    }
+</div>

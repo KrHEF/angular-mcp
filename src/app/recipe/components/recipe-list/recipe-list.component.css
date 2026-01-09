@@ -1,0 +1,10 @@
+:host {
+    display: grid;
+    grid-template: 1fr;
+    gap: 30px;
+}
+
+.recipe-list__buttons {
+    display: flex;
+    gap: 10px;
+}

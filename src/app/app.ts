@@ -1,12 +1,21 @@
-import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import {
+    Component,
+    signal,
+} from '@angular/core';
+
+import {RecipeList} from "app/recipe/components/recipe-list/recipe-list.component";
+
+import {APP_TITLE} from './app.config';
+
 
 @Component({
-  selector: 'app-root',
-  imports: [RouterOutlet],
-  templateUrl: './app.html',
-  styleUrl: './app.css'
+    selector: 'app-root',
+    templateUrl: './app.html',
+    styleUrl: './app.css',
+    imports: [
+        RecipeList
+    ],
 })
-export class App {
-  protected readonly title = signal('test1');
+export class App  {
+    protected readonly title = signal(APP_TITLE);
 }

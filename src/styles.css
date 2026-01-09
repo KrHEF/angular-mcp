@@ -1,1 +1,14 @@
-/* You can add global styles to this file, and also import other style files */
+html {
+    font-size: 10px;
+}
+
+body {
+    line-height: 1.5;
+    margin: 0;
+    box-sizing: content-box;
+}
+
+h1, h2, h3 {
+    margin: 0;
+    padding: 0;
+}

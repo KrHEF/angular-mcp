@@ -1,0 +1,13 @@
+:host {
+    font-size: 1.5rem;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    align-items: stretch;
+    min-height: 100vh;
+}
+
+.header,
+.main,
+.footer {
+    padding: 10px;
+}

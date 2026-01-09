@@ -1,0 +1,32 @@
+@let $recipe = recipe();
+
+<div class="recipe">
+    <h2 class="recipe__title">{{$recipe.name}}</h2>
+
+    <div class="recipe__image">
+        <img
+            [src]="$recipe.imgUrl"
+            [attr.alt]="$recipe.name"
+        />
+    </div>
+
+    <div class="recipe__descr">
+        {{$recipe.description}}
+    </div>
+
+    <div class="recipe__servings">
+        <span class="recipe_label">Current servings: {{servings()}}</span>
+        <button type="button" (click)="onMoreClick()">More</button>
+        <button type="button" (click)="onLessClick()">Less</button>
+    </div>
+
+    <div class="recipe__ingredints ingredints">
+        <h3 class="ingredints__title">Ingredient list (adjusted by servings):</h3>
+        <dl class="ingredints__list ingredient">
+            @for ($ingredient of adjustedIngredients(); track $index) {
+                <dt class="ingredient__name">{{$ingredient.name}}</dt>
+                <dd class="ingredient__quantity"><strong>{{$ingredient.quantity}}</strong> {{$ingredient.unit}}</dd>
+            }
+        </dl>
+    </div>
+</div>

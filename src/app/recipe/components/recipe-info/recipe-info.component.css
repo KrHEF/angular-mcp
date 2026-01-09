@@ -1,0 +1,24 @@
+.recipe {
+    display: flex;
+    flex-flow: column;
+    gap: 10px;
+}
+
+.recipe__title {
+    font-size: 2rem;
+}
+
+.recipe__servings {
+    display: flex;
+    gap: 10px;
+}
+
+.ingredient {
+    display: grid;
+    width: fit-content;
+    grid-template-columns: 1fr 1fr;
+}
+
+.ingredient__name:after {
+    content: ':';
+}
