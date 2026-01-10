@@ -1,0 +1,71 @@
+<h2>Add new recipe</h2>
+<form class="{{$class}}" [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="{{$class}}__content">
+        <div class="{{$class}}__element {{$class}}__element--name">
+            <label for="name">Name:</label>
+            <input type="text" id="name" [formControl]="form.controls.name" />
+            <app-control-error [control]="form.controls.name" />
+        </div>
+        <div class="{{$class}}__element {{$class}}__element--description">
+            <label for="description">Description:</label>
+            <textarea id="description" [formControl]="form.controls.description"></textarea>
+            <app-control-error [control]="form.controls.description" />
+        </div>
+    </div>
+
+    <div class="{{$class}}__ingredients ingredients">
+        <h3 class="ingredients__title">Ingredients</h3>
+        <div class="ingredient">
+            @for (ingredientForm of form.controls.ingredients.controls; track $index) {
+                <div class="ingredient__form">
+                    <div class="{{$class}}__element {{$class}}__element--ingredient_name">
+                        <label for="ingredient_name_{{$index}}">Ingredient:</label>
+                        <input type="text"
+                            id="ingredient_name_{{$index}}"
+                            [formControl]="ingredientForm.controls.name"
+                        />
+                        <app-control-error [control]="ingredientForm.controls.name" />
+                    </div>
+
+                    <div class="{{$class}}__element {{$class}}__element--ingredient_quantity">
+                        <label for="ingredient_quantity_{{$index}}">Quantity:</label>
+                        <input type="text"
+                            id="ingredient_quantity_{{$index}}"
+                            [formControl]="ingredientForm.controls.quantity"
+                        />
+                        <app-control-error [control]="ingredientForm.controls.quantity" />
+                    </div>
+
+                    <div class="{{$class}}__element {{$class}}__element--ingredient_unit">
+                        <label for="ingredient_unit_{{$index}}">Unit:</label>
+                        <input type="text"
+                            id="ingredient_unit_{{$index}}"
+                            [formControl]="ingredientForm.controls.unit"
+                        />
+                        <app-control-error [control]="ingredientForm.controls.unit" />
+                    </div>
+
+                    @if ($count > 1) {
+                        <div class="ingredient__button ingredient__button--delete">
+                            <button type="button" (click)="deleteIngredient($index)">
+                                Delete
+                            </button>
+                        </div>
+                    }
+                </div>
+            }
+        </div>
+        <div class="ingredient__button ingredient__button--add">
+            <button type="button" (click)="addIngredient()">
+                Add ingredient
+            </button>
+        </div>
+    </div>
+
+    <div class="{{$class}}__button {{$class}}__button--save">
+        <button type="submit"
+                [disabled]="form.invalid">
+            Save
+        </button>
+    </div>
+</form>

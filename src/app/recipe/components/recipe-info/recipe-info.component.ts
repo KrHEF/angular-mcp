@@ -51,6 +51,7 @@ export class RecipeInfoComponent {
             untracked(() => {
                 if (Number.isNaN(id)) {
                     this.recipe.set(null);
+                    this.ready.set(true);
                     return;
                 }
 

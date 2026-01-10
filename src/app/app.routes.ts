@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import {RecipeForm} from 'app/recipe/components/recipe-form/recipe-form';
 import {RecipeInfoComponent} from 'app/recipe/components/recipe-info/recipe-info.component';
 import {RecipeList} from 'app/recipe/components/recipe-list/recipe-list.component';
 
@@ -13,9 +14,14 @@ export const routes: Routes = [
         component: RecipeList,
         children: [
             {
+                path: 'add',
+                component: RecipeForm,
+
+            },
+            {
                 path: ':id',
                 component: RecipeInfoComponent,
-            }
-        ]
+            },
+        ],
     },
 ];

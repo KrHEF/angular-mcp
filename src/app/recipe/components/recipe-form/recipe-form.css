@@ -1,0 +1,42 @@
+.recipe-form {
+    display: grid;
+    gap: 30px;
+}
+
+.recipe-form__content {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    gap: 10px;
+}
+
+.recipe-form__element {
+    display: grid;
+    align-items: start;
+    align-self: start;
+
+    label {
+        font-size: 1.1rem;
+    }
+}
+
+.ingredients {
+    display: grid;
+    gap: 10px;
+}
+
+.ingredient__form {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 10px;
+}
+
+.ingredient__button {
+
+    button {
+        height: 24px;
+    }
+}
+
+.ingredient__button--delete {
+    align-self: self-end;
+}

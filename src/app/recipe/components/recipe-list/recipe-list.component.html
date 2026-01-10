@@ -12,11 +12,14 @@
 
     <div class="{{$class}}__buttons">
         @for ($recipe of filteredRecipes(); track $recipe.id) {
-            <button type="button" [routerLink]="[$recipe.id]">
+            <button type="button" [routerLink]="'/recipes/' + $recipe.id">
                 @if ($recipe.isFavorite) {★}
                 {{$recipe.name}}
             </button>
         }
+        <button type="button" [routerLink]="'/recipes/add'">
+            ✚ Add new recipe
+        </button>
     </div>
 
     <router-outlet />
