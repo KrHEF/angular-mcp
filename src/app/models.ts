@@ -1,15 +1,7 @@
-export type TUnit =
-    | 'bunch'
-    | 'g'
-    | 'each'
-    | 'tsp'
-    | 'tbsp'
-    ;
-
 export interface IIngredient {
     name: string
     quantity: number
-    unit: TUnit
+    unit: string
 }
 
 export interface IRecipe {

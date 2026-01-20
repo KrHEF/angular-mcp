@@ -1,5 +1,6 @@
 import {
     Component,
+    DestroyRef,
     OnInit,
     Signal,
     computed,
@@ -7,6 +8,7 @@ import {
     signal,
     untracked,
 } from '@angular/core';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {FormsModule} from '@angular/forms';
 import {RouterOutlet, RouterLink} from '@angular/router';
 
@@ -34,6 +36,7 @@ export class RecipeList implements OnInit {
     protected readonly $class = 'recipe-list';
 
     private readonly recipeService = inject(RecipeService);
+    private readonly destroyRef = inject(DestroyRef);
 
     constructor() {
         this.filteredRecipes = computed(() => {
@@ -49,8 +52,13 @@ export class RecipeList implements OnInit {
     }
 
     private async loadRecipeList(): Promise<void> {
-        const recipes: IRecipeList = await this.recipeService.getList();
-        this.recipes.set(recipes);
+        this.recipeService.list$
+            .pipe(takeUntilDestroyed(this.destroyRef))
+            .subscribe((recipes: IRecipeList) => {
+                this.recipes.set(recipes);
+            })
+
+        await this.recipeService.getList();
         this.ready.set(true);
     }
 }
