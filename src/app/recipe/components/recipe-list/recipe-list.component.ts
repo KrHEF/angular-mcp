@@ -11,6 +11,7 @@ import {
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {FormsModule} from '@angular/forms';
 import {RouterOutlet, RouterLink} from '@angular/router';
+import {MatButton} from '@angular/material/button';
 
 import {IRecipeList} from 'app/models';
 import {RecipeService} from 'app/recipe/services/recipe.service';
@@ -23,6 +24,7 @@ import {RecipeService} from 'app/recipe/services/recipe.service';
         FormsModule,
         RouterOutlet,
         RouterLink,
+        MatButton,
     ],
     host: {
         '[class]': '$class',
